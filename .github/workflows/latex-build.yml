@@ -17,3 +17,4 @@ jobs:
       - uses: smkwlab/latex-release-action@v2
         with:
           files: main
+          upload_on_pr: true
