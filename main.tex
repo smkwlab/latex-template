@@ -1,21 +1,115 @@
-\documentclass[a4paper,12pt]{ujarticle}
+\RequirePackage{plautopatch}
+\documentclass[dvipdfmx,uplatex,a4paper,10pt,oneside,onecolumn,openany]{jsbook}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{datetime}
 
-\usepackage[top=25mm,bottom=25mm,left=25mm,right=25mm]{geometry}
-\usepackage[dvipdfmx]{graphicx}
-\usepackage{url}
-\usepackage{comment} %コメントアウト
-\usepackage{otf} %ローマ数字
-\usepackage{multirow}
+% List
+\usepackage{enumitem}
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{$\bullet$}
+\renewcommand{\labelitemiv}{$\circ$}
+
+%% Font Config
+\usepackage[deluxe]{otf}
+\usepackage[noalphabet,unicode,haranoaji]{pxchfon}
+\usepackage[prefernoncjk]{pxcjkcat}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{lmodern}
+\usepackage{fix-cm}
+\cjkcategory{sym18}{cjk}
+\cjkcategory{sym19}{cjk}
+
+%% Cites
+\usepackage{cite}
+\makeatletter
+\def\NAT@parse{\typeout{}}
+\makeatother
+
+%% Margin Config
+\usepackage[dvipdfm,top=10zw,bottom=12zw,left=10zw,right=10zw]{geometry}
+\newcommand{\parasep}{\vspace*{3zh}}
+\setlength{\footskip}{30pt}
+\renewcommand{\baselinestretch}{1.25}
+\sloppy
+
+%% Link Config
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[bookmarks=true,bookmarksnumbered=true,colorlinks=true,pdfusetitle=true]{hyperref}
+\hypersetup{
+  linkcolor=black,
+  citecolor=black,
+  filecolor=black,
+  urlcolor=black,
+  anchorcolor=black
+}
+
+%% Header Config
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\gtfamily\sffamily\bfseries\upshape \leftmark}
+\chead{}
+\rhead{\gtfamily\sffamily\bfseries\upshape \rightmark}
+\fancyfoot[CE,CO]{\thepage}
+\fancypagestyle{plainhead}{%
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
+\renewcommand{\sfdefault}{phv}
+
+%% Set date
+\year2025 \relax
+\month6 \relax
+
+%% Document Config
+\title{LaTeX テンプレート}
+\author{著者名}
+\date{{\the\year}年~{\the\month}月}
 
 \begin{document}
-
-\title{LaTeX Template}
-\author{Author Name}
-\date{\today}
 \maketitle
 
-\section{Introduction}
+\frontmatter
+\setcounter{tocdepth}{2}
+\tableofcontents
 
-This is a template document for Japanese LaTeX documents.
+\mainmatter
+
+\chapter{はじめに}
+
+これは日本語LaTeX文書のテンプレートです。
+
+\section{数式の例}
+
+デカルト座標で、点 \((a, b)\) を中心とする半径 \(r\) の円は、次式の陰関数で与えられる。
+
+\begin{equation}
+(x - a)^2 + (y - b)^2 = r^2
+\label{eq:circle}\end{equation}
+
+式\ref{eq:circle}は円の方程式を表している。
+
+\section{リストの例}
+
+\begin{itemize}
+\item 第一項目
+\item 第二項目
+  \begin{itemize}
+  \item サブ項目
+  \item サブ項目
+  \end{itemize}
+\item 第三項目
+\end{itemize}
+
+\section{引用の例}
+
+\begin{quote}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+\end{quote}
+
+\backmatter
 
 \end{document}
