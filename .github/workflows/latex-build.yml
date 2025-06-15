@@ -1,3 +1,4 @@
+---
 # LaTeX Document Build and Release Workflow
 # Automatically builds LaTeX documents into PDFs and creates releases
 name: Build and Release PDF
@@ -19,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     # Use the latest TeXLive Japanese environment with textlint support
     container: ghcr.io/smkwlab/texlive-ja-textlint:2025b
-    
+
     steps:
       # Build LaTeX documents using the latex-release-action
       - name: Build and Release LaTeX Documents
@@ -28,13 +29,13 @@ jobs:
           # Specify multiple files to build (comma-separated)
           # Common document types: main report, appendix, slides, etc.
           files: main, appendix, slide, report
-          
+
           # Upload PDFs as artifacts for pull requests (enables preview)
           upload_on_pr: true
-          
+
           # Additional latexmk options for compilation
           # -pdf: Force PDF output via pdflatex
           latex_options: -pdf
-          
+
           # Clean up intermediate files after build
           cleanup: true
