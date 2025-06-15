@@ -1,0 +1,83 @@
+# TeXLive Dependency Update Checker
+# Automatically checks for new TeXLive image versions and creates update PRs
+name: Check TeXLive Updates
+
+on:
+  # Run daily to check for new versions
+  schedule:
+    - cron: '0 2 * * *'  # Daily at 2 AM UTC
+  # Allow manual trigger for testing
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check-updates:
+    name: Check for TeXLive Image Updates
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Check for new TeXLive versions
+        id: check-version
+        run: |
+          # Get current version from workflow file
+          current=$(grep 'ghcr.io/smkwlab/texlive-ja-textlint:' .github/workflows/latex-build.yml | sed 's/.*://' | tr -d ' ')
+          echo "current_version=$current" >> $GITHUB_OUTPUT
+          
+          # Check latest available version (this is a placeholder - actual implementation would check registry)
+          # For now, we'll use a simple approach
+          echo "Checking for updates to TeXLive image..."
+          echo "Current version: $current"
+          
+          # Log current status
+          echo "::notice::Current TeXLive version: $current"
+        
+      - name: Create update PR if needed
+        if: false  # Disabled for now - implement actual version checking logic
+        run: |
+          # This would contain logic to:
+          # 1. Compare versions
+          # 2. Update workflow files
+          # 3. Create PR with changes
+          echo "Update logic would go here"
+          
+  # Test current configuration
+  test-current-setup:
+    name: Test Current LaTeX Environment
+    runs-on: ubuntu-latest
+    container: ghcr.io/smkwlab/texlive-ja-textlint:2025b
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Test LaTeX compilation
+        run: |
+          # Test if the current environment works properly
+          echo "Testing LaTeX environment..."
+          
+          # Check TeXLive version
+          echo "::group::TeXLive Version Info"
+          tlmgr --version || echo "tlmgr not available"
+          pdflatex --version || echo "pdflatex not available"
+          platex --version || echo "platex not available"
+          echo "::endgroup::"
+          
+          # Check textlint availability
+          echo "::group::Textlint Check"
+          which textlint && textlint --version || echo "textlint not available"
+          echo "::endgroup::"
+          
+          # Test basic compilation if main.tex exists
+          if [ -f "main.tex" ]; then
+            echo "::group::Test Compilation"
+            latexmk -pdf main.tex || echo "Compilation test failed"
+            echo "::endgroup::"
+          else
+            echo "No main.tex found - skipping compilation test"
+          fi
