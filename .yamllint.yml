@@ -1,0 +1,26 @@
+---
+# yamllint configuration for GitHub Actions workflows
+extends: default
+
+rules:
+  # Allow truthy values like 'on:', 'true', 'yes' in GitHub Actions
+  truthy:
+    allowed-values: ['true', 'false', 'on', 'off', 'yes', 'no']
+    check-keys: false
+  
+  # Relax line length for readable workflow comments
+  line-length:
+    max: 120
+    
+  # Allow missing document start for simple files
+  document-start:
+    present: false
+    
+  # Be stricter about trailing spaces
+  trailing-spaces: enable
+  
+  # Ensure proper indentation
+  indentation:
+    spaces: 2
+    indent-sequences: true
+    check-multi-line-strings: false
