@@ -33,9 +33,9 @@ jobs:
           # Upload PDFs as artifacts for pull requests (enables preview)
           upload_on_pr: true
 
-          # Additional latexmk options for compilation
-          # -pdf: Force PDF output via pdflatex
-          latex_options: -pdf
+          # latexmk will use .latexmkrc configuration
+          # No additional options needed - respects uplatex + dvipdfmx workflow
+          # latex_options: (not specified to use .latexmkrc defaults)
 
           # Clean up intermediate files after build
           cleanup: true
