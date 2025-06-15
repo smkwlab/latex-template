@@ -1,6 +1,8 @@
 ---
 # TeXLive Dependency Update Checker
-# Automatically checks for new TeXLive image versions and creates update PRs
+# Note: TeXLive version updates are managed centrally by latex-environment repository.
+# Individual template repositories do not need to update their LaTeX versions independently.
+# This workflow serves as a monitoring tool and compatibility check.
 name: Check TeXLive Updates
 
 on:
