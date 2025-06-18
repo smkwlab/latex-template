@@ -12,12 +12,9 @@ rules:
   line-length:
     max: 120
     
-  # Allow missing document start for simple files
+  # Require document start for consistency
   document-start:
-    present: false
-    
-  # Be stricter about trailing spaces
-  trailing-spaces: enable
+    present: true
   
   # Ensure proper indentation
   indentation:
