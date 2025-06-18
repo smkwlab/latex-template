@@ -367,3 +367,6 @@ tags
 *-diffHEAD.tex
 
 main.pdf
+
+# Claude Code local settings
+.claude/settings.local.json
