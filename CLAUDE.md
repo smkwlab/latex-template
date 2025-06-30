@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a minimal LaTeX template repository designed for Japanese academic documents, specifically for the Shimokawa Lab (下川研). It uses the Japanese LaTeX typesetting system with `ujarticle` document class.
+This is a general-purpose LaTeX template repository designed for Japanese academic documents, specifically for the Shimokawa Lab (下川研). It uses the Japanese LaTeX typesetting system with `jsarticle` document class for lightweight and versatile document creation.
 
 This is a general-purpose template intended to be used with the [Shimokawa Lab LaTeX environment](https://github.com/smkwlab/latex-environment). For specialized documents, dedicated templates are available:
 - [Thesis template](https://github.com/smkwlab/sotsuron-template) for graduation theses
@@ -34,7 +34,7 @@ Note: The build requires a Japanese LaTeX distribution (like TeX Live with Japan
 
 ## Key Architecture
 
-- **main.tex**: The primary LaTeX source file using `ujarticle` document class
+- **main.tex**: The primary LaTeX source file using `jsarticle` document class
 - **GitHub Actions**: Automated build and release workflow using `ghcr.io/smkwlab/texlive-ja-textlint:2025b` Docker container via `smkwlab/latex-release-action@v2.2.0`
 - **Output**: Generates `main.pdf` (which is gitignored)
 
@@ -47,15 +47,27 @@ The repository automatically builds and releases PDFs when:
 ## Important Configuration
 
 The template uses:
-- `ujarticle` document class (Japanese article variant with UTF-8 support)
+- `jsarticle` document class (lightweight Japanese article format)
+- `uplatex` engine with Unicode support
 - `dvipdfmx` driver for graphics (standard for Japanese LaTeX)
 - A4 paper with 25mm margins on all sides
-- Essential packages: geometry, graphicx, url, comment, otf, multirow
+- Essential packages: graphicx, amsmath, amssymb, url, enumitem, otf
 
 ## Working with the Template
 
 When modifying `main.tex`:
-- The document class `ujarticle` is optimized for Japanese text with UTF-8 encoding
+- The document class `jsarticle` provides a lightweight structure with section/subsection organization
+- Use `uplatex` engine for Unicode-based Japanese text processing
 - Graphics should be compatible with `dvipdfmx` driver (PDF, PNG, JPEG formats)
-- The `otf` package provides Japanese font features including Roman numerals
+- The template includes basic math support via `amsmath` and `amssymb` packages
+- Structure your content using `\section{}` and `\subsection{}` commands
 - Pull requests automatically generate PDF artifacts for review
+
+## Use Cases
+
+This template is ideal for:
+- Research notes and documentation
+- Experiment reports and lab records
+- Course assignments and reports
+- Personal academic documents
+- Prototyping larger LaTeX documents
