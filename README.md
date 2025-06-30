@@ -148,7 +148,7 @@ uplatex main.tex
 dvipdfmx main.dvi
 
 # latexmk使用（設定済みの場合）
-latexmk -pdfdvi main.tex
+latexmk main.tex
 
 # クリーンアップ
 rm -f *.aux *.log *.dvi *.toc
