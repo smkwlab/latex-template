@@ -1,110 +1,115 @@
-\RequirePackage{plautopatch}
-\documentclass[dvipdfmx,uplatex,a4paper,10pt,oneside,onecolumn,openany]{jsbook}
-\usepackage{graphicx}
-\usepackage{listings}
-\usepackage{datetime}
+\documentclass[dvipdfmx,uplatex,a4paper,10pt]{jsarticle}
 
-% List
-\usepackage{enumitem}
-\renewcommand{\labelitemi}{$\bullet$}
-\renewcommand{\labelitemii}{$\circ$}
-\renewcommand{\labelitemiii}{$\bullet$}
-\renewcommand{\labelitemiv}{$\circ$}
+%% 基本パッケージ
+\usepackage{graphicx}                    % 図表挿入
+\usepackage{amsmath,amssymb}            % 数式
+\usepackage{url}                        % URL表示
+\usepackage{enumitem}                   % リスト調整
 
-%% Font Config
+%% 日本語フォント設定
 \usepackage[deluxe]{otf}
 \usepackage[noalphabet,unicode,haranoaji]{pxchfon}
-\usepackage[prefernoncjk]{pxcjkcat}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{textcomp}
-\usepackage{lmodern}
-\usepackage{fix-cm}
-\cjkcategory{sym18}{cjk}
-\cjkcategory{sym19}{cjk}
 
+%% レイアウト設定
+\usepackage[top=25mm,bottom=25mm,left=25mm,right=25mm]{geometry}
+\renewcommand{\baselinestretch}{1.2}    % 行間調整
 
-%% Margin Config
-\usepackage[dvipdfm,top=10zw,bottom=12zw,left=10zw,right=10zw]{geometry}
-\newcommand{\parasep}{\vspace*{3zh}}
-\setlength{\footskip}{30pt}
-\renewcommand{\baselinestretch}{1.25}
-\sloppy
+%% リスト設定
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$\circ$}
 
-%% Link Config
-\PassOptionsToPackage{hyphens}{url}
-\usepackage[bookmarks=true,bookmarksnumbered=true,colorlinks=true,pdfusetitle=true]{hyperref}
-\hypersetup{
-  linkcolor=black,
-  citecolor=black,
-  filecolor=black,
-  urlcolor=black,
-  anchorcolor=black
-}
+%% ハイパーリンク設定（シンプル）
+\usepackage[hidelinks]{hyperref}
 
-%% Header Config
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\lhead{\gtfamily\sffamily\bfseries\upshape \leftmark}
-\chead{}
-\rhead{\gtfamily\sffamily\bfseries\upshape \rightmark}
-\fancyfoot[CE,CO]{\thepage}
-\fancypagestyle{plainhead}{%
-\fancyhead{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}}
-\renewcommand{\sfdefault}{phv}
-
-%% Set date
-\year2025 \relax
-\month6 \relax
-
-%% Document Config
-\title{LaTeX テンプレート}
+%% 文書情報
+\title{LaTeX文書テンプレート}
 \author{著者名}
-\date{{\the\year}年~{\the\month}月}
+\date{\today}
 
 \begin{document}
 \maketitle
 
-\frontmatter
-\setcounter{tocdepth}{2}
+% 目次（簡素化）
 \tableofcontents
+\newpage
 
-\mainmatter
+\section{はじめに}
 
-\chapter{はじめに}
+これは汎用的な日本語LaTeX文書のテンプレートです。研究ノート、レポート、実験記録など様々な用途に活用できます。
 
-これは日本語LaTeX文書のテンプレートです。
-
-\section{数式の例}
-
-デカルト座標で、点 \((a, b)\) を中心とする半径 \(r\) の円は、次式の陰関数で与えられる。
-
-\begin{equation}
-(x - a)^2 + (y - b)^2 = r^2
-\label{eq:circle}\end{equation}
-
-式\ref{eq:circle}は円の方程式を表している。
-
-\section{リストの例}
+\subsection{このテンプレートの特徴}
 
 \begin{itemize}
-\item 第一項目
-\item 第二項目
-  \begin{itemize}
-  \item サブ項目
-  \item サブ項目
-  \end{itemize}
-\item 第三項目
+\item シンプルな構造で使いやすい
+\item 日本語に最適化されたレイアウト
+\item 基本的な機能を網羅
+\item カスタマイズが容易
 \end{itemize}
 
-\section{引用の例}
+\section{基本的な使い方}
+
+\subsection{文書の構成}
+
+文書は\texttt{section}と\texttt{subsection}で構成します。必要に応じて\texttt{subsubsection}も使用できます。
+
+\subsection{数式の記述}
+
+数式は以下のように記述できます。
+
+インライン数式: $E = mc^2$
+
+独立した数式:
+\begin{equation}
+(x - a)^2 + (y - b)^2 = r^2
+\label{eq:circle}
+\end{equation}
+
+式~\ref{eq:circle}は円の方程式です。
+
+\subsection{図表の挿入}
+
+図や表は\texttt{graphicx}パッケージを使用して挿入できます。
+
+% 図の例（コメントアウト）
+% \begin{figure}[htbp]
+%   \centering
+%   \includegraphics[width=0.8\textwidth]{example.png}
+%   \caption{図の例}
+%   \label{fig:example}
+% \end{figure}
+
+\section{応用例}
+
+\subsection{リストの活用}
+
+番号なしリスト:
+\begin{itemize}
+\item 項目1
+\item 項目2
+  \begin{itemize}
+  \item サブ項目A
+  \item サブ項目B
+  \end{itemize}
+\item 項目3
+\end{itemize}
+
+番号付きリスト:
+\begin{enumerate}
+\item 手順1
+\item 手順2
+\item 手順3
+\end{enumerate}
+
+\subsection{引用と参考文献}
+
+重要な内容は以下のように引用できます:
 
 \begin{quote}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+ここに引用文を記述します。長い引用や重要な文章を強調する際に使用します。
 \end{quote}
 
-\backmatter
+\section{まとめ}
+
+このテンプレートを基に、目的に応じてカスタマイズしてください。LaTeX文書作成の効率向上に役立てていただければ幸いです。
 
 \end{document}
