@@ -20,7 +20,7 @@ uplatex main.tex
 dvipdfmx main.dvi
 
 # Or if latexmk is configured for Japanese LaTeX
-latexmk -pdfdvi main.tex
+latexmk main.tex
 
 # Clean build artifacts
 rm -f *.aux *.log *.dvi *.toc *.lof *.lot
