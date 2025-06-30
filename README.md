@@ -24,7 +24,7 @@
 
 ```bash
 # 汎用LaTeX文書用の自動セットアップ
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/smkwlab/thesis-management-tools/main/create-repo/setup-latex.sh)"
+DOC_TYPE=latex /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/smkwlab/thesis-management-tools/main/create-repo/setup.sh)"
 ```
 
 **自動セットアップの特徴**:
