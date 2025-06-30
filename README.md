@@ -19,47 +19,170 @@
 
 ## 🔧 使用方法
 
-### 1. リポジトリ作成
-このテンプレートから新しいリポジトリを作成してください。
+### 自動セットアップ（推奨）
+[thesis-management-tools](https://github.com/smkwlab/thesis-management-tools)の自動セットアップスクリプトを使用：
 
-### 2. 文書作成
-`main.tex` を編集して文書を作成してください：
+```bash
+# 汎用LaTeX文書用の自動セットアップ
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/smkwlab/thesis-management-tools/main/create-repo/setup-latex.sh)"
+```
 
-- **section/subsection**: シンプルな構造で文書を整理
-- **数式・図表**: 基本的なLaTeX機能をすぐに利用可能
-- **カスタマイズ**: 必要に応じて機能追加やレイアウト調整
+**自動セットアップの特徴**:
+- 学籍番号・文書名の対話的入力
+- カスタマイズされたmain.texとREADME.md生成
+- GitHub認証とリポジトリ作成の自動化
+- 依存関係なしのDocker環境で実行
 
-### 3. PDF生成
+### 手動セットアップ
+1. このテンプレートから新しいリポジトリを作成
+2. 下記手順で文書作成を開始
 
-#### プルリクエストでプレビュー
+### 文書作成と編集
+
+#### 基本的な文書構造
+`main.tex` を編集して文書を作成：
+
+```latex
+\section{章タイトル}
+本文の内容...
+
+\subsection{節タイトル}
+詳細な説明...
+
+\subsubsection{項タイトル}  % 必要に応じて
+さらに詳細な内容...
+```
+
+#### よく使用する要素
+
+**数式**:
+```latex
+% インライン数式
+テキスト中の数式: $E = mc^2$
+
+% 独立した数式
+\begin{equation}
+(x - a)^2 + (y - b)^2 = r^2
+\label{eq:circle}
+\end{equation}
+
+% 式番号なし
+\begin{equation*}
+\sum_{i=1}^{n} x_i = 0
+\end{equation*}
+```
+
+**箇条書きと番号付きリスト**:
+```latex
+% 箇条書き
+\begin{itemize}
+\item 項目1
+\item 項目2
+  \begin{itemize}
+  \item サブ項目
+  \end{itemize}
+\end{itemize}
+
+% 番号付きリスト
+\begin{enumerate}
+\item 手順1
+\item 手順2
+\end{enumerate}
+```
+
+**図表の挿入**:
+```latex
+% 図の挿入
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{図ファイル名.pdf}
+\caption{図のキャプション}
+\label{fig:example}
+\end{figure}
+
+% 表の作成
+\begin{table}[htbp]
+\centering
+\caption{表のキャプション}
+\label{tab:example}
+\begin{tabular}{|l|c|r|}
+\hline
+左寄せ & 中央 & 右寄せ \\
+\hline
+データ1 & データ2 & データ3 \\
+\hline
+\end{tabular}
+\end{table}
+```
+
+### PDF生成とワークフロー
+
+#### 自動PDF生成
+GitHub Actionsにより以下のタイミングで自動的にPDFが生成されます：
+
+**プルリクエスト時（プレビュー）**:
 1. ブランチを作成して変更をコミット
 2. プルリクエストを作成
-3. 自動的にPDFが生成され、Artifactsからダウンロード可能
+3. 自動的にPDFが生成され、ActionsのArtifactsからダウンロード可能
+4. レビュー・修正のサイクルが効率化
 
-#### リリース版作成
-1. タグを作成してプッシュ:
-   ```bash
-   git tag v1.0.0
-   git push origin v1.0.0
-   ```
-2. 自動的にGitHubリリースが作成され、PDFが添付されます
+**mainブランチへのプッシュ時**:
+- 自動的にPDFをビルドして検証
+- エラーがある場合はActionsログで確認可能
 
-## 📋 適用シーン
+**タグ作成時（正式リリース）**:
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+- 自動的にGitHubリリースが作成
+- 完成版PDFがリリースに添付
+- バージョン管理された文書の保管
 
-### 研究活動
+#### ローカルでのビルド
+開発環境での確認用：
+
+```bash
+# uplatex使用（推奨）
+uplatex main.tex
+dvipdfmx main.dvi
+
+# latexmk使用（設定済みの場合）
+latexmk -pdfdvi main.tex
+
+# クリーンアップ
+rm -f *.aux *.log *.dvi *.toc
+```
+
+## 📋 適用シーンと選択指針
+
+### このテンプレートが最適な用途
 - **研究ノート**: 日々の研究記録やアイデア整理
-- **実験記録**: 実験手順、結果、考察の記録
-- **文献調査**: 調査内容のまとめや整理
+- **実験記録**: 実験手順、結果、考察の詳細記録
+- **技術レポート**: 調査・分析結果のまとめ
+- **学習ノート**: 勉強内容の体系的な整理
+- **個人文書**: 備忘録、プロトタイプ文書
 
-### 学習・課題
-- **レポート作成**: 授業課題や実習レポート
-- **学習記録**: 勉強内容のまとめやノート
-- **発表資料**: プレゼンテーション原稿
+### 他の専用テンプレートとの使い分け
 
-### 個人利用
-- **メモ・記録**: 日常的な記録や備忘録
-- **プロトタイプ**: LaTeX文書の下書きやテスト
-- **カスタマイズベース**: より大きな文書の基盤として
+| 用途 | テンプレート | 特徴 |
+|------|-------------|------|
+| **卒業論文・修士論文** | [sotsuron-template](https://github.com/smkwlab/sotsuron-template) | 論文特化・PR-based review |
+| **週間報告** | [wr-template](https://github.com/smkwlab/wr-template) | 週次フォーマット・連続管理 |
+| **情報科学演習** | [ise-report-template](https://github.com/smkwlab/ise-report-template) | HTML品質管理・学習重視 |
+| **汎用文書** | **latex-template** | 軽量・柔軟・即座利用 |
+
+### セットアップ方法の選択
+
+**自動セットアップ推奨ケース**:
+- 学生が個人プロジェクトを開始
+- カスタマイズされた初期設定が必要
+- GitHub操作に不慣れ
+
+**手動セットアップ推奨ケース**:
+- 既存のワークフローがある
+- 大幅なカスタマイズを予定
+- テンプレートの詳細を理解して使用
 
 ## ⚙️ 環境詳細
 
