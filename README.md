@@ -23,7 +23,6 @@
 [thesis-management-tools](https://github.com/smkwlab/thesis-management-tools)の自動セットアップスクリプトを使用：
 
 ```bash
-# 汎用LaTeX文書用の自動セットアップ
 DOC_TYPE=latex /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/smkwlab/thesis-management-tools/main/create-repo/setup.sh)"
 ```
 
