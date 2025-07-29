@@ -22,12 +22,30 @@
 ### 自動セットアップ（推奨）
 [thesis-management-tools](https://github.com/smkwlab/thesis-management-tools)の自動セットアップスクリプトを使用：
 
+#### 組織利用（学生向け）
 ```bash
 DOC_TYPE=latex /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/smkwlab/thesis-management-tools/main/create-repo/setup.sh)"
 ```
 
+#### 個人利用（教員・研究者・一般ユーザー向け）
+```bash
+INDIVIDUAL_MODE=true DOC_TYPE=latex DOCUMENT_NAME=my-paper /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/smkwlab/thesis-management-tools/main/create-repo/setup.sh)"
+```
+
 **自動セットアップの特徴**:
+
+**組織モード（デフォルト）**:
 - 学籍番号・文書名の対話的入力
+- リポジトリ名: `学籍番号-文書名` (例: `k21rs001-research-note`)
+- 組織管理下での利用（smkwlab組織）
+
+**個人モード（`INDIVIDUAL_MODE=true`）**:
+- 学籍番号の入力不要
+- リポジトリ名: `文書名` のみ (例: `my-paper`, `experiment-log`)
+- 個人アカウントでの利用
+- 教員・研究者・一般ユーザーに最適
+
+**共通機能**:
 - カスタマイズされたmain.texとREADME.md生成
 - GitHub認証とリポジトリ作成の自動化
 - 依存関係なしのDocker環境で実行
@@ -37,6 +55,27 @@ DOC_TYPE=latex /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/smkw
 2. 下記手順で文書作成を開始
 
 ### 文書作成と編集
+
+### 1. 文書編集
+\`main.tex\` を編集して文書を作成：
+- **直接編集**: mainブランチで直接編集可能
+- **構造**: section/subsection でシンプルに整理
+- **数式・図表**: 基本LaTeX機能をすぐに利用
+
+### 2. PDF生成
+- **自動生成**: プッシュ時に自動でPDFが生成
+- **確認方法**: GitHub Actionsタブで状況確認
+- **ダウンロード**: Artifactsから生成PDFを取得
+
+### 3. ローカルビルド（オプション）
+\`\`\`bash
+# 日本語LaTeXでコンパイル
+uplatex main.tex
+dvipdfmx main.dvi
+
+# または一括処理（設定済みの場合）
+latexmk main.tex
+\`\`\`
 
 #### 基本的な文書構造
 `main.tex` を編集して文書を作成：
@@ -116,8 +155,25 @@ DOC_TYPE=latex /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/smkw
 
 ### PDF生成とワークフロー
 
+#### ローカルでのビルド
+VS Code でファイル保存時に下記の latexmk が実行される
+開発環境での確認用：
+
+```bash
+# latexmk使用（推奨）
+latexmk main.tex
+
+
+# uplatex使用（なんらかの理由で個別に実行したい場合）
+uplatex main.tex
+dvipdfmx main.dvi
+
+## クリーンアップ
+rm -f *.aux *.log *.dvi *.toc
+```
+
 #### 自動PDF生成
-GitHub Actionsにより以下のタイミングで自動的にPDFが生成されます：
+GitHub Actionsにより以下のタイミングで自動的にPDFが生成される。
 
 **プルリクエスト時（プレビュー）**:
 1. ブランチを作成して変更をコミット
@@ -138,20 +194,6 @@ git push origin v1.0.0
 - 完成版PDFがリリースに添付
 - バージョン管理された文書の保管
 
-#### ローカルでのビルド
-開発環境での確認用：
-
-```bash
-# uplatex使用（推奨）
-uplatex main.tex
-dvipdfmx main.dvi
-
-# latexmk使用（設定済みの場合）
-latexmk main.tex
-
-# クリーンアップ
-rm -f *.aux *.log *.dvi *.toc
-```
 
 ## 📋 適用シーンと選択指針
 
@@ -178,10 +220,27 @@ rm -f *.aux *.log *.dvi *.toc
 - カスタマイズされた初期設定が必要
 - GitHub操作に不慣れ
 
+**個人モード（INDIVIDUAL_MODE）推奨ケース**:
+- **教員・研究者**: 個人研究文書、論文ドラフト作成
+- **一般ユーザー**: 学籍番号を持たない利用者の文書作成
+- **個人プロジェクト**: 組織管理外での文書作成
+- **プロトタイプ作成**: 個人アカウントでの試作文書
+
 **手動セットアップ推奨ケース**:
 - 既存のワークフローがある
 - 大幅なカスタマイズを予定
 - テンプレートの詳細を理解して使用
+
+### 利用モードの比較
+
+| 項目 | 組織モード | 個人モード（INDIVIDUAL_MODE） |
+|------|-----------|------------------------------|
+| **対象ユーザー** | 学生 | 教員・研究者・一般ユーザー |
+| **学籍番号** | 必須 | 不要 |
+| **リポジトリ名** | `k21rs001-research-note` | `research-note` |
+| **作成先** | smkwlab組織 | 個人アカウント |
+| **管理体制** | 組織管理下 | 個人管理 |
+| **使用例** | 学生の課題・研究 | 教員の研究文書・個人プロジェクト |
 
 ## ⚙️ 環境詳細
 
