@@ -22,33 +22,27 @@
 ### 自動セットアップ（推奨）
 [thesis-management-tools](https://github.com/smkwlab/thesis-management-tools)の自動セットアップスクリプトを使用：
 
-#### 組織利用（学生向け）
+#### 下川研学生向け
 ```bash
 DOC_TYPE=latex /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/smkwlab/thesis-management-tools/main/create-repo/setup.sh)"
 ```
 
-#### 個人利用（教員・研究者・一般ユーザー向け）
+#### それ以外の皆さん向け
 ```bash
-INDIVIDUAL_MODE=true DOC_TYPE=latex DOCUMENT_NAME=my-paper /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/smkwlab/thesis-management-tools/main/create-repo/setup.sh)"
+INDIVIDUAL_MODE=true DOC_TYPE=latex /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/smkwlab/thesis-management-tools/main/create-repo/setup.sh)"
 ```
 
 **自動セットアップの特徴**:
 
-**下川研学生向け（デフォルト）**:
+**下川研学生向け**:
 - 学籍番号・文書名の対話的入力
-- リポジトリ名: `学籍番号-文書名` (例: `k21rs001-research-note`)
-- 組織管理下での利用（smkwlab組織）
+- リポジトリ名: `学籍番号-文書名` (例: `smkwlab/k21rs001-research-note`)
 
-**個人モード（`INDIVIDUAL_MODE=true`）**:
-- 学籍番号の入力不要
-- リポジトリ名: `文書名` のみ (例: `my-paper`, `experiment-log`)
-- 個人アカウントでの利用
-- 教員・研究者・一般ユーザーに最適
+**それ以外の皆さん向け**:
+- リポジトリ名: `文書名` (例: `my-paper`, `experiment-log`)
 
 **共通機能**:
-- カスタマイズされたmain.texとREADME.md生成
-- GitHub認証とリポジトリ作成の自動化
-- 依存関係なしのDocker環境で実行
+- リポジトリの自動作成と LaTeX環境の追加
 
 ### 手動セットアップ
 1. このテンプレートから新しいリポジトリを作成
@@ -203,33 +197,6 @@ git push origin v1.0.0
 - **技術レポート**: 調査・分析結果のまとめ
 - **学習ノート**: 勉強内容の体系的な整理
 - **個人文書**: 備忘録、プロトタイプ文書
-
-### 他の専用テンプレートとの使い分け
-
-| 用途 | テンプレート | 特徴 |
-|------|-------------|------|
-| **卒業論文・修士論文** | [sotsuron-template](https://github.com/smkwlab/sotsuron-template) | 論文特化・PR-based review |
-| **週間報告** | [wr-template](https://github.com/smkwlab/wr-template) | 週次フォーマット・連続管理 |
-| **情報科学演習** | [ise-report-template](https://github.com/smkwlab/ise-report-template) | HTML品質管理・学習重視 |
-| **汎用文書** | **latex-template** | 軽量・柔軟・即座利用 |
-
-### セットアップ方法の選択
-
-**自動セットアップ推奨ケース**:
-- 学生が個人プロジェクトを開始
-- カスタマイズされた初期設定が必要
-- GitHub操作に不慣れ
-
-**個人モード（INDIVIDUAL_MODE）推奨ケース**:
-- **教員・研究者**: 個人研究文書、論文ドラフト作成
-- **一般ユーザー**: 学籍番号を持たない利用者の文書作成
-- **個人プロジェクト**: 組織管理外での文書作成
-- **プロトタイプ作成**: 個人アカウントでの試作文書
-
-**手動セットアップ推奨ケース**:
-- 既存のワークフローがある
-- 大幅なカスタマイズを予定
-- テンプレートの詳細を理解して使用
 
 ### 利用モードの比較
 
