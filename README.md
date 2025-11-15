@@ -19,7 +19,27 @@
 
 ## 🔧 使用方法
 
+### 前提条件
+
+以下のソフトウェアがインストール済みであること：
+
+1. **Docker Desktop** - LaTeX 環境の実行に必要
+2. **GitHub Desktop** - リポジトリ管理・同期に必要
+3. **GitHub CLI (gh)** - リポジトリ作成スクリプトの実行に必要
+   - [インストール方法](https://github.com/smkwlab/thesis-management-tools/blob/main/docs/INSTALL-GH.md)
+
+### 準備
+
+GitHub CLI の認証を完了してください：
+
+```bash
+gh auth login
+```
+
+**注意:** `gh` コマンドが見つからない場合は [インストール方法](https://github.com/smkwlab/thesis-management-tools/blob/main/docs/INSTALL-GH.md) を参照してください。
+
 ### 自動セットアップ（推奨）
+
 [thesis-management-tools](https://github.com/smkwlab/thesis-management-tools)の自動セットアップスクリプトを使用：
 
 #### 下川研学生向け
@@ -27,22 +47,20 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/smkwlab/thesis-management-tools/main/create-repo/setup.sh)" bash latex
 ```
 
+**実行手順:**
+1. 上記コマンドを実行（macOS のターミナルまたは Windows の WSL 内）
+2. 学籍番号・文書名を入力
+3. 自動でリポジトリ作成・セットアップ完了（リポジトリ名: `学籍番号-文書名`）
+
 #### それ以外の皆さん向け
 ```bash
 INDIVIDUAL_MODE=true /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/smkwlab/thesis-management-tools/main/create-repo/setup.sh)" bash latex
 ```
 
-**自動セットアップの特徴**:
-
-**下川研学生向け**:
-- 学籍番号・文書名の対話的入力
-- リポジトリ名: `学籍番号-文書名` (例: `smkwlab/k21rs001-research-note`)
-
-**それ以外の皆さん向け**:
-- リポジトリ名: `文書名` (例: `my-paper`, `experiment-log`)
-
-**共通機能**:
-- リポジトリの自動作成と LaTeX環境の追加
+**実行手順:**
+1. 上記コマンドを実行（macOS のターミナルまたは Windows の WSL 内）
+2. 文書名を入力
+3. 自動でリポジトリ作成・セットアップ完了（リポジトリ名: `文書名`）
 
 ### 手動セットアップ
 1. このテンプレートから新しいリポジトリを作成
