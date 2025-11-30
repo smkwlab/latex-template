@@ -1,30 +1,14 @@
 ---
-# LaTeX Document Build and Release Workflow
-# Automatically builds LaTeX documents into PDFs and creates releases
 name: Build and Release PDF
 
 on:
-  # Trigger on pull requests for PDF preview generation
   pull_request_target:
-  # Trigger on tags for release creation
   push:
     tags:
       - '*'
 
-permissions:
-  contents: write  # Required for creating releases and uploading artifacts
-
 jobs:
-  build-and-release-pdf:
-    name: Build LaTeX Documents and Create Release
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v5
-      - name: Build and Release LaTeX Documents
-        uses: smkwlab/latex-release-action@v3.1.0
-        env:
-          GH_TOKEN: ${{ github.token }}
-        with:
-          files: main, appendix, slide, report
-          cleanup: true
+  build:
+    uses: smkwlab/.github/.github/workflows/latex-build.yml@main
+    with:
+      files: "main, appendix, slide, report"
