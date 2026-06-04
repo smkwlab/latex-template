@@ -44,8 +44,10 @@ gh auth login
 
 #### 下川研学生向け
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/smkwlab/thesis-management-tools/main/create-repo/setup.sh)" bash latex
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/smkwlab/thesis-management-tools/v1/create-repo/setup.sh)" bash latex
 ```
+
+> 💡 `v1` は安定版（最新の v1 系）を指す移動タグです。最新の開発版を試す場合は URL の `v1` を `main` に置き換えてください。
 
 **実行手順:**
 1. 上記コマンドを実行（macOS のターミナルまたは Windows の WSL 内）
@@ -54,7 +56,7 @@ gh auth login
 
 #### それ以外の皆さん向け
 ```bash
-INDIVIDUAL_MODE=true /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/smkwlab/thesis-management-tools/main/create-repo/setup.sh)" bash latex
+INDIVIDUAL_MODE=true /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/smkwlab/thesis-management-tools/v1/create-repo/setup.sh)" bash latex
 ```
 
 **実行手順:**
