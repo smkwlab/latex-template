@@ -29,5 +29,5 @@ jobs:
     secrets:
       anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
     with:
-      model: sonnet
+      model: opus
       language: 日本語
