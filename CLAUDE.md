@@ -35,7 +35,7 @@ Note: The build requires a Japanese LaTeX distribution (like TeX Live with Japan
 ## Key Architecture
 
 - **main.tex**: The primary LaTeX source file using `jsarticle` document class
-- **GitHub Actions**: Automated build and release workflow using `ghcr.io/smkwlab/texlive-ja-textlint:2025b` Docker container via `smkwlab/latex-release-action@v2.2.0`
+- **GitHub Actions**: Automated build and release via the shared `smkwlab/.github` LaTeX build workflow (`latex-build.yml@v1`), which centrally pins the `texlive-ja-textlint` Docker image and `latex-release-action` version for the whole ecosystem
 - **Output**: Generates `main.pdf` (which is gitignored)
 
 ## Release Workflow
