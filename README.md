@@ -47,7 +47,7 @@ gh auth login
 bash <(curl -fsSL https://repo-setup.smkwlab.net) latex
 ```
 
-> 💡 短縮 URL `https://repo-setup.smkwlab.net` は安定版（最新の v1 系）の setup.sh を配信します。最新の開発版を試す場合は `bash <(curl -fsSL https://raw.githubusercontent.com/smkwlab/student-repo-management/main/create-repo/setup.sh) latex` を使用してください。
+> 💡 短縮 URL `https://repo-setup.smkwlab.net` は安定版（最新の v1 系）の setup.sh を配信します。
 
 **実行手順:**
 1. 上記コマンドを実行（macOS のターミナルまたは Windows の WSL 内）
