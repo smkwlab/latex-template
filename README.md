@@ -91,6 +91,22 @@ dvipdfmx main.dvi
 latexmk main.tex
 \`\`\`
 
+### 添削を受ける場合（draft PR サイクル・オプション）
+
+このテンプレートには、卒業論文・ポスターと同じ **Pull Request ベースの添削フロー**が組み込まれています。研究会予稿など教員の添削を受けたい文書では、以下の手順で有効になります（添削が不要な場合は、これまでどおり main ブランチで直接編集してください。draft 系ブランチを使わない限りこの仕組みは一切動作しません）：
+
+1. **`0th-draft` ブランチを作成**して切り替える（リポジトリに `0th-draft` が既にある場合はこの手順は不要）
+2. `main.tex` を編集して commit / push
+3. **`0th-draft` → `main` の Pull Request を作成**して添削を依頼
+   - PR 作成と同時に次稿用の `1st-draft` ブランチが自動作成される
+4. レビューコメントを確認し、`1st-draft` に切り替えて改稿を続け、再び PR を作成
+   - 以降 `2nd-draft`, `3rd-draft`... と必要なだけ繰り返す
+
+> **重要**: draft ブランチの PR は**マージせずクローズ**します（誤マージは自動でブロックされます）。
+> draft PR サイクルの共通ルールの全体像は
+> [STUDENT-WORKFLOW.md](https://github.com/smkwlab/latex-ecosystem/blob/main/docs/STUDENT-WORKFLOW.md)
+> を参照してください。
+
 #### 基本的な文書構造
 `main.tex` を編集して文書を作成：
 
