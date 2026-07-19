@@ -38,6 +38,23 @@ Note: The build requires a Japanese LaTeX distribution (like TeX Live with Japan
 - **GitHub Actions**: Automated build and release via the shared `smkwlab/.github` LaTeX build workflow (`latex-build.yml@v1`), which centrally pins the `texlive-ja-textlint` Docker image and `latex-release-action` version for the whole ecosystem
 - **Output**: Generates `main.pdf` (which is gitignored)
 
+## Review Workflow (draft PR cycle, optional)
+
+This template ships the same draft-cycle workflows as sotsuron-template /
+ise-report-template / poster-template, but they are **dormant by design**:
+the reusable workflows in `smkwlab/.github` guard on draft-named branches
+(`if: contains(head_ref, 'draft')`), so repositories that only use `main`
+are unaffected.
+
+- **create-next-draft.yml**: auto-creates the next draft branch when a draft PR is opened
+- **prevent-draft-merge.yml**: blocks accidental merges of draft PRs (draft PRs are closed, not merged)
+- **sync-next-draft.yml**: propagates suggestion commits to later draft branches
+
+To adopt the flow in a repository, create a `0th-draft` branch and open a PR
+to `main`. Repository initialization with `main` + `0th-draft` (plus
+auto-assign and branch protection) is handled by student-repo-management
+when the review flow is requested at creation time.
+
 ## Release Workflow
 
 The repository automatically builds and releases PDFs when:
