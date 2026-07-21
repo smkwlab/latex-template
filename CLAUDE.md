@@ -88,6 +88,7 @@ This template is ideal for:
 - Course assignments and reports
 - Personal academic documents
 - Prototyping larger LaTeX documents
+
 ## Which README is shown where
 
 GitHub resolves READMEs in the order `.github/` -> root -> `docs/`, and
