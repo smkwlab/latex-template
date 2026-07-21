@@ -88,3 +88,16 @@ This template is ideal for:
 - Course assignments and reports
 - Personal academic documents
 - Prototyping larger LaTeX documents
+## Which README is shown where
+
+GitHub resolves READMEs in the order `.github/` -> root -> `docs/`, and
+student-repo-management removes `.github/README.md` at repository creation.
+The two files therefore surface in exactly one place each:
+
+- **[.github/README.md](.github/README.md)** - Template documentation (setup, writing
+  procedure). Shown on this repository's front page; deleted in student repositories.
+- **[README.md](README.md)** - Author-information template (name, student ID, title)
+  filled in by the student. Shown on the student repository's front page.
+
+Links out of `.github/README.md` may be relative because it only ever renders here.
+Files that survive into student repositories must reference it by absolute URL.
