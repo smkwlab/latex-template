@@ -97,9 +97,10 @@ latexmk main.tex
 
 1. **`0th-draft` ブランチを作成**して切り替える（リポジトリに `0th-draft` が既にある場合はこの手順は不要）
 2. `main.tex` を編集して commit / push
-3. **`0th-draft` → `main` の Pull Request を作成**して添削を依頼
-   - PR 作成と同時に次稿用の `1st-draft` ブランチが自動作成される
-4. レビューコメントを確認し、`1st-draft` に切り替えて改稿を続け、再び PR を作成
+3. **`base: main` ← `compare: 0th-draft` の Pull Request を作成**して添削を依頼
+   - PR 作成と同時に次稿ブランチ（`0th-draft` の次は `1st-draft`）が自動作成される
+4. レビューコメントを確認し、自動作成された次稿ブランチに切り替えて改稿を続け、再び PR を作成
+   - **PR の base（マージ先）は前稿ブランチ**にする（例: `base: 0th-draft` ← `compare: 1st-draft`）。前の稿がない最初の `0th-draft` の PR だけ `base: main`
    - 以降 `2nd-draft`, `3rd-draft`... と必要なだけ繰り返す
 
 > **重要**: draft ブランチの PR は**マージせずクローズ**します（誤マージは自動でブロックされます）。
