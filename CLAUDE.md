@@ -51,7 +51,9 @@ are unaffected.
 - **sync-next-draft.yml**: propagates suggestion commits to later draft branches
 
 To adopt the flow in a repository, create a `0th-draft` branch and open a PR
-to `main`. Repository initialization with `main` + `0th-draft` (plus
+with `main` as its base. Later drafts use the previous draft branch as base
+(the PR from `1st-draft` has base `0th-draft`, and so on). Repository
+initialization with `main` + `0th-draft` (plus
 auto-assign and branch protection) is handled by student-repo-management
 when the review flow is requested at creation time.
 
