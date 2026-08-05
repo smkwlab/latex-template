@@ -1,6 +1,7 @@
 # LaTeX Template
 
-九州産業大学理工学部下川研用の汎用LaTeXテンプレートです。研究ノート、レポート、実験記録など様々な用途に活用できる軽量で使いやすいテンプレートです。
+九州産業大学理工学部下川研用の汎用LaTeXテンプレートです。
+研究ノート、レポート、実験記録など様々な用途に活用できる軽量で使いやすいテンプレートです。
 
 ## 🚀 主な機能
 
@@ -93,22 +94,20 @@ latexmk main.tex
 
 ### 添削を受ける場合（draft PR サイクル・オプション）
 
-このテンプレートには、卒業論文・ポスターと同じ **Pull Request ベースの添削フロー**が組み込まれています。研究会予稿など教員の添削を受けたい文書では、以下の手順で有効になります（添削が不要な場合は、これまでどおり main ブランチで直接編集してください。draft 系ブランチを使わない限りこの仕組みは一切動作しません）：
+このテンプレートには、卒業論文・ポスターと同じ **Pull Request ベースの添削フロー**が組み込まれています。
+研究会予稿など教員の添削を受けたい文書では、以下の手順で有効になります（添削が不要な場合は、これまでどおり main ブランチで直接編集してください。draft 系ブランチを使わない限りこの仕組みは一切動作しません）：
 
 1. **`0th-draft` ブランチを作成**して切り替える（リポジトリに `0th-draft` が既にある場合はこの手順は不要）
 2. `main.tex` を編集して commit / push
 3. **`base: main` ← `compare: 0th-draft` の Pull Request を作成**して添削を依頼
    - PR 作成と同時に次稿ブランチ（`0th-draft` の次は `1st-draft`）が自動作成される
 4. レビューコメントを確認し、自動作成された次稿ブランチに切り替えて改稿を続け、再び PR を作成
-   - **PR の base（マージ先）は前稿ブランチ**にする（例: `base: 0th-draft` ← `compare: 1st-draft`）。前の稿がない最初の `0th-draft` の PR だけ `base: main`
+   - **PR の base（マージ先）は前稿ブランチ**にする（例: `base: 0th-draft` ← `compare: 1st-draft`）。
+     前の稿がない最初の `0th-draft` の PR だけ `base: main`
    - 以降 `2nd-draft`, `3rd-draft`... と必要なだけ繰り返す
 
 > **重要**: draft ブランチの PR は**マージせずクローズ**します（誤マージは自動でブロックされます）。
-> draft PR サイクルの共通ルールの全体像は
-> [STUDENT-WORKFLOW.md](https://github.com/smkwlab/latex-ecosystem/blob/main/docs/STUDENT-WORKFLOW.md)、
-> ブランチの作成・切り替えや PR 作成の操作手順は
-> [GITHUB-DESKTOP-GUIDE.md](https://github.com/smkwlab/latex-ecosystem/blob/main/docs/GITHUB-DESKTOP-GUIDE.md)
-> を参照してください。
+> draft PR サイクルの共通ルールの全体像は [STUDENT-WORKFLOW.md](https://github.com/smkwlab/latex-ecosystem/blob/main/docs/STUDENT-WORKFLOW.md)、ブランチの作成・切り替えや PR 作成の操作手順は [GITHUB-DESKTOP-GUIDE.md](https://github.com/smkwlab/latex-ecosystem/blob/main/docs/GITHUB-DESKTOP-GUIDE.md) を参照してください。
 
 #### 基本的な文書構造
 `main.tex` を編集して文書を作成：
@@ -189,8 +188,7 @@ latexmk main.tex
 ### PDF生成とワークフロー
 
 #### ローカルでのビルド
-VS Code でファイル保存時に下記の latexmk が実行される
-開発環境での確認用：
+VS Code でファイル保存時に下記の latexmk が実行される 開発環境での確認用：
 
 ```bash
 # latexmk使用（推奨）
