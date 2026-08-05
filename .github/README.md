@@ -105,7 +105,9 @@ latexmk main.tex
 
 > **重要**: draft ブランチの PR は**マージせずクローズ**します（誤マージは自動でブロックされます）。
 > draft PR サイクルの共通ルールの全体像は
-> [STUDENT-WORKFLOW.md](https://github.com/smkwlab/latex-ecosystem/blob/main/docs/STUDENT-WORKFLOW.md)
+> [STUDENT-WORKFLOW.md](https://github.com/smkwlab/latex-ecosystem/blob/main/docs/STUDENT-WORKFLOW.md)、
+> ブランチの作成・切り替えや PR 作成の操作手順は
+> [GITHUB-DESKTOP-GUIDE.md](https://github.com/smkwlab/latex-ecosystem/blob/main/docs/GITHUB-DESKTOP-GUIDE.md)
 > を参照してください。
 
 #### 基本的な文書構造
