@@ -21,4 +21,5 @@
 
 - **書き方・作業手順**: [テンプレートの README](https://github.com/smkwlab/latex-template/blob/main/.github/README.md)
 - **添削を受ける場合**: [STUDENT-WORKFLOW ガイド](https://github.com/smkwlab/latex-ecosystem/blob/main/docs/STUDENT-WORKFLOW.md)（教員の指示でレビューフロー付きで作成された場合、または自分で `0th-draft` ブランチを作って Pull Request を出す場合）
+- **GitHub Desktop の操作手順・トラブルシューティング**: [GITHUB-DESKTOP-GUIDE](https://github.com/smkwlab/latex-ecosystem/blob/main/docs/GITHUB-DESKTOP-GUIDE.md)
 - **質問・トラブル**: smkwlabML または担当教員まで
